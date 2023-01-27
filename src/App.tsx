@@ -1,54 +1,56 @@
-import './App.css';
+import React from 'react';
+import styled from 'styled-components';
 
-import React, { useState } from 'react';
+import favicon from './favicon.svg';
+import useCounterStore from './store/counter';
 
-import logo from './logo.svg';
-
-function App() {
-  const [count, setCount] = useState(0);
+const App = () => {
+  const { count, increment } = useCounterStore((state) => state);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="header">
-          🚀 Vite + React + Typescript 🤘 & <br />
-          Eslint 🔥+ Prettier
-        </p>
-
-        <div className="body">
-          <button onClick={() => setCount((count) => count + 1)}>
-            🪂 Click me : {count}
-          </button>
-
-          <p> Don&apos;t forgot to install Eslint and Prettier in Your Vscode.</p>
-
-          <p>
-            Mess up the code in <code>App.tsx </code> and save the file.
-          </p>
-          <p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-            {' | '}
-            <a
-              className="App-link"
-              href="https://vitejs.dev/guide/features.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Vite Docs
-            </a>
-          </p>
-        </div>
-      </header>
-    </div>
+    <AppLayout>
+      <FaviconImage src={favicon} alt="favicon" />
+      Vite App
+      <Button onClick={increment}>clicked: {count}</Button>
+    </AppLayout>
   );
-}
+};
 
 export default App;
+
+const AppLayout = styled.div`
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  gap: 1rem;
+`;
+
+const FaviconImage = styled.img`
+  height: 10vmin;
+  pointer-events: none;
+`;
+
+const Button = styled.button`
+  background-color: #61dafb;
+  border: none;
+  border-radius: 0.5rem;
+  color: #282c34;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    color: #61dafb;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+`;
