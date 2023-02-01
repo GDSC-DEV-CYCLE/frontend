@@ -5,7 +5,7 @@ const theme = {
     primaryDeep: '#34B486',
     error: '#E46F68',
     black: '#2A2A36',
-    white: '#FFFFF',
+    white: '#FFFFFF',
     gray1: '#F4F4F4',
     gray2: '#D9D9D9',
     gray3: '#9A9A9A',
