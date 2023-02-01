@@ -1,9 +1,16 @@
+import { ButtonHTMLAttributes } from 'react';
+
 import * as S from './styled';
 
-interface Props {
-  name: string;
-}
+type Props = {
+  color?: 'primary' | 'normal';
+  children: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function Button({ name }: Props) {
-  return <></>;
+export default function Button({ color = 'primary', children, ...args }: Props) {
+  return (
+    <S.Button color={color} {...args}>
+      {children}
+    </S.Button>
+  );
 }
