@@ -6,10 +6,6 @@ export const Layout = styled.div`
   width: 184px;
 `;
 
-interface NavigationWrapperProps {
-  isSelected: boolean;
-}
-
 export const Title = styled.p`
   color: ${({ theme }) => theme.colors.gray3};
   margin: 0 0 8px 0;
@@ -17,13 +13,17 @@ export const Title = styled.p`
   ${Body1};
 `;
 
+interface NavigationWrapperProps {
+  isSelected: boolean;
+}
+
 export const NavigationWrapper = styled.button<NavigationWrapperProps>`
-  cursor: pointer;
-  border: none;
-  padding: 10px 16px;
-  width: 100%;
   display: flex;
   justify-content: flex-start;
+  padding: 10px 16px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
 
   border-radius: ${({ theme }) => theme.radius.sm};
 
