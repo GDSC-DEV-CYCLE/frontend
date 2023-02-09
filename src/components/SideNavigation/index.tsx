@@ -23,13 +23,13 @@ export default function SideNavigation({
       <div>
         {navigations.map((item, index) => {
           return (
-            <S.NavigationWrapper
+            <S.NavigationButton
               key={index}
               isSelected={item === selected}
               onClick={() => onClickNavigation(item)}
             >
               {item}
-            </S.NavigationWrapper>
+            </S.NavigationButton>
           );
         })}
       </div>
