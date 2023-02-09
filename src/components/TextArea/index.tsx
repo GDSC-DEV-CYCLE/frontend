@@ -14,9 +14,5 @@ export default function TextArea({ ...args }: Props) {
     textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
   }, []);
 
-  return (
-    <>
-      <S.TextArea onInput={resizeTextAreaHeight} ref={textAreaRef} {...args} />
-    </>
-  );
+  return <S.TextArea onInput={resizeTextAreaHeight} ref={textAreaRef} {...args} />;
 }
