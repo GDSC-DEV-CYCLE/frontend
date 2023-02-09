@@ -13,11 +13,11 @@ export const Title = styled.p`
   ${Body1};
 `;
 
-interface NavigationWrapperProps {
+interface NavigationButtonProps {
   isSelected: boolean;
 }
 
-export const NavigationWrapper = styled.button<NavigationWrapperProps>`
+export const NavigationButton = styled.button<NavigationButtonProps>`
   display: flex;
   justify-content: flex-start;
   padding: 10px 16px;
