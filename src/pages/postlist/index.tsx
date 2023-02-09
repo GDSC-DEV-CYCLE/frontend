@@ -1,9 +1,3 @@
-import TextArea from '../../components/TextArea';
-
 export default function PostListPage() {
-  return (
-    <div>
-      <TextArea />
-    </div>
-  );
+  return <>글목록페이지</>;
 }
