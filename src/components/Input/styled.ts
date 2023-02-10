@@ -4,6 +4,7 @@ import { Body1 } from '../../styles/common';
 
 export const Input = styled.input`
   width: 100%;
+  height: 40px;
   padding: 8px 20px;
   outline: none;
   box-sizing: border-box;

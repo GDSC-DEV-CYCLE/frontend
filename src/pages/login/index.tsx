@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import styled from 'styled-components';
 
 import DevCycleLogo from '../../assets/images/dev-cycle-logo.svg';
 import Button from '../../components/Button';
