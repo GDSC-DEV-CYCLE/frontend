@@ -62,8 +62,8 @@ const ContentLayout = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 320px;
   min-width: 200px;
-  max-width: 400px;
   width: 30%;
 `;
 
@@ -72,6 +72,7 @@ const LoginForm = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 const SignUpButton = styled(Button)`
