@@ -1,14 +1,26 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import DevCycleLogo from '../../assets/images/dev-cycle-logo.svg';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import VSpace from '../../components/VSpace';
+import {
+  ContentLayout,
+  DevCycleLogoImage,
+  ErrorMessageBox,
+  LoginForm,
+  LoginPageLayout,
+  SignUpButton,
+} from './styled';
 
 export default function LoginPage() {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
   const login = async ({ email, password }: { email: string; password: string }) => {
     // TODO: 로그인 API 호출
     console.log('login', email, password);
+    setErrorMessage('이메일 또는 비밀번호가 일치하지 않습니다.');
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -34,7 +46,8 @@ export default function LoginPage() {
           <Input type="email" id="email" placeholder="이메일" />
           <VSpace size={8} />
           <Input type="password" id="password" placeholder="비밀번호" />
-          <VSpace size={32} />
+          <ErrorMessageBox>{errorMessage}</ErrorMessageBox>
+          <VSpace size={8} />
           <Button type="submit">로그인</Button>
           <VSpace size={32} />
           <SignUpButton onClick={handleSignUp}>회원가입</SignUpButton>
@@ -43,46 +56,3 @@ export default function LoginPage() {
     </LoginPageLayout>
   );
 }
-
-const DevCycleLogoImage = styled.img`
-  height: 24px;
-`;
-
-const LoginPageLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #fff;
-`;
-
-const ContentLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 320px;
-  min-width: 200px;
-  width: 30%;
-`;
-
-const LoginForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-`;
-
-const SignUpButton = styled(Button)`
-  background-color: #fff0;
-  color: ${({ theme }) => theme.colors.gray2};
-
-  width: fit-content;
-
-  &:hover {
-    background-color: #fff1;
-    color: ${({ theme }) => theme.colors.gray3};
-  }
-`;
