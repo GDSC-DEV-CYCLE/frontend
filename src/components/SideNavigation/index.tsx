@@ -4,14 +4,14 @@ import * as S from './styled';
 
 type Props = {
   title: string;
-  navigations: string[];
+  navigationList: string[];
   selected: string;
   setSelected: Dispatch<SetStateAction<string>>;
 };
 
 export default function SideNavigation({
   title,
-  navigations,
+  navigationList,
   selected,
   setSelected,
 }: Props) {
@@ -21,15 +21,15 @@ export default function SideNavigation({
     <S.Layout>
       <S.Title>{title}</S.Title>
       <div>
-        {navigations.map((item, index) => {
+        {navigationList.map((item, index) => {
           return (
-            <S.NavigationWrapper
+            <S.NavigationButton
               key={index}
               isSelected={item === selected}
               onClick={() => onClickNavigation(item)}
             >
               {item}
-            </S.NavigationWrapper>
+            </S.NavigationButton>
           );
         })}
       </div>
