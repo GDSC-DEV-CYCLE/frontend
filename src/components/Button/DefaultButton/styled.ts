@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Body1 } from '../../styles/common';
+import { Body1 } from '../../../styles/common';
 
 interface ButtonProps {
   color: 'primary' | 'normal';

@@ -1,3 +1,12 @@
+import { useState } from 'react';
+
+import LikeButton from '../../components/Button/LikeButton';
+
 export default function PostListPage() {
-  return <>글목록페이지</>;
+  const [a, seta] = useState(false);
+  return (
+    <>
+      <LikeButton isSelected={a}>1.3k</LikeButton>
+    </>
+  );
 }
