@@ -6,9 +6,10 @@ type Props = {
   content: string;
   tagList: string[];
   writer: string;
-  company?: string;
   commentNum: number;
   likeNum: number;
+
+  company?: string;
 };
 
 export default function WritingList({
@@ -16,9 +17,9 @@ export default function WritingList({
   content,
   tagList,
   writer,
-  company,
   commentNum,
   likeNum,
+  company,
 }: Props) {
   return (
     <S.Layout>
