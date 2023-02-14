@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import DefaultButton from '../../components/Button/DefaultButton';
 import { Body1, Display2 } from '../../styles/common';
 
 export const Layout = styled.div`
@@ -38,3 +39,15 @@ export const PostLayout = styled.div`
 `;
 
 export const CommentsLayout = styled.div``;
+
+export const WritingCommentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 16px 0;
+`;
+
+export const WritingCommentButton = styled(DefaultButton)`
+  width: 80px;
+  margin: 8px 0 0 0;
+`;

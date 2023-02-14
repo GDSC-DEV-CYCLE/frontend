@@ -1,8 +1,21 @@
+import { useState } from 'react';
+
 import LikeButton from '../../components/Button/LikeButton';
+import TextArea from '../../components/TextArea';
 import Profile from './Profile';
 import * as S from './styled';
 
 export default function PostDetailPage() {
+  const [comment, setComment] = useState('');
+
+  const onChangeCommentTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setComment(e.target.value);
+  };
+
+  const onClickCommentSubmitButton = () => {
+    setComment('');
+  };
+
   return (
     <S.Layout>
       <S.PostLayout>
@@ -30,7 +43,14 @@ export default function PostDetailPage() {
         <Profile writer="김가은" introduction="개발자입니다" isFollowed={false} />
       </S.PostLayout>
 
-      <S.CommentsLayout></S.CommentsLayout>
+      <S.CommentsLayout>
+        <S.WritingCommentContainer>
+          <TextArea onChange={onChangeCommentTextArea} value={comment} />
+          <S.WritingCommentButton color="normal" onClick={onClickCommentSubmitButton}>
+            작성
+          </S.WritingCommentButton>
+        </S.WritingCommentContainer>
+      </S.CommentsLayout>
     </S.Layout>
   );
 }
