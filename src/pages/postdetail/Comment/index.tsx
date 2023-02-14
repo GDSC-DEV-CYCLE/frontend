@@ -13,7 +13,7 @@ type Props = {
   company?: string;
 };
 
-export default function CommentContainer({
+export default function Comment({
   children,
   writer,
   time,

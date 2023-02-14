@@ -9,12 +9,7 @@ type Props = {
   company?: string;
 };
 
-export default function ProfileContainer({
-  writer,
-  introduction,
-  isFollowed,
-  company,
-}: Props) {
+export default function Profile({ writer, introduction, isFollowed, company }: Props) {
   return (
     <S.Layout>
       <div>

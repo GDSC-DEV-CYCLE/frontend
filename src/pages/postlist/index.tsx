@@ -1,3 +1,3 @@
 export default function PostListPage() {
-  return <></>;
+  return <>글목록페이지</>;
 }

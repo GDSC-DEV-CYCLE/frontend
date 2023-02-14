@@ -5,7 +5,6 @@ import { Body1 } from '../../../styles/common';
 export const Layout = styled.div`
   padding: 16px;
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.gray2}`};
-  border-top: ${({ theme }) => `1px solid ${theme.colors.gray2}`};
 `;
 
 export const CommentInfoContainer = styled.div`
