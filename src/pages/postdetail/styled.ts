@@ -8,6 +8,11 @@ export const Layout = styled.div`
   margin: auto;
 `;
 
+export const PostLayout = styled.div`
+  padding: 20px;
+  border-bottom: ${({ theme }) => `1px solid ${theme.colors.gray2}`};
+`;
+
 export const PostInfoContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -32,11 +37,6 @@ export const Content = styled.p`
 `;
 
 export const TagsContainer = styled.div``;
-
-export const PostLayout = styled.div`
-  padding: 20px;
-  border-bottom: ${({ theme }) => `1px solid ${theme.colors.gray2}`};
-`;
 
 export const CommentsLayout = styled.div``;
 
