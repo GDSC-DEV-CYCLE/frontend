@@ -8,6 +8,7 @@ interface ButtonProps {
 
 export const Button = styled.button<ButtonProps>`
   cursor: pointer;
+  height: 40px;
   width: 100%;
   border-radius: ${({ theme }) => theme.radius.sm};
   padding: ${({ theme }) => theme.spacing.md};
