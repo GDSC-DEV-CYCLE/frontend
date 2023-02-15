@@ -14,11 +14,12 @@ export default function SideNavigation({
   navigationList,
   selected,
   setSelected,
+  ...args
 }: Props) {
   const onClickNavigation = (item: string) => setSelected(item);
 
   return (
-    <S.Layout>
+    <S.Layout {...args}>
       <S.Title>{title}</S.Title>
       <div>
         {navigationList.map((item, index) => {

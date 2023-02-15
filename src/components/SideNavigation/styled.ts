@@ -23,6 +23,7 @@ export const NavigationButton = styled.button<NavigationButtonProps>`
   padding: 10px 16px;
   width: 100%;
   border: none;
+  white-space: nowrap;
   cursor: pointer;
 
   border-radius: ${({ theme }) => theme.radius.sm};
