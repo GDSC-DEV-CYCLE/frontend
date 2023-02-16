@@ -1,12 +1,21 @@
 import { create } from 'zustand';
 
 interface UseTopNavigationTypes {
-  navigation: string;
+  postKind: string;
+  changePostKind: (navigtion: string) => void;
 }
 
 export const useTopNavigation = create<UseTopNavigationTypes>((set) => ({
-  navigation: '칼럼',
-  moveToQAndA: () => set({ navigation: 'Q&A' }),
-  moveToColumn: () => set({ navigation: '칼럼' }),
-  moveToReview: () => set({ navigation: '후기' }),
+  postKind: '칼럼',
+  changePostKind: (navigation: string) => set({ postKind: navigation }),
+}));
+
+interface UseLoginTypes {
+  isLogin: boolean;
+  changeLoginState: () => void;
+}
+
+export const useLogin = create<UseLoginTypes>((set) => ({
+  isLogin: false,
+  changeLoginState: () => set((state) => ({ isLogin: !state.isLogin })),
 }));

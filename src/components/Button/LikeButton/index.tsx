@@ -12,10 +12,8 @@ type Props = {
 export default function LikeButton({ children, isClicked, ...args }: Props) {
   return (
     <S.Button {...args} isSelected={isClicked}>
-      <img src={isClicked ? whiteHeartIcon : grayHeartIcon} alt="heart icon" />
+      <img src={isClicked ? whiteHeartIcon : grayHeartIcon} alt="heart-icon" />
       <S.NumberWrapper> {children}</S.NumberWrapper>
     </S.Button>
   );
 }
-
-//
