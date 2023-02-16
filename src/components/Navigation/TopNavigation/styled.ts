@@ -25,7 +25,7 @@ interface NavigationButtonProps {
 }
 
 export const NavigationButton = styled.button<NavigationButtonProps>`
-  margin: 4px 4px 0 0;
+  margin: 4px 8px 0 0;
   padding: 0 8px 2px 8px;
   background-color: transparent;
   border: none;
