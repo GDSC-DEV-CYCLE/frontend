@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import TopNavigation from './components/Navigation/TopNavigation';
 import LoginPage from './pages/login';
 import MyPage from './pages/mypage';
 import PostDetailPage from './pages/postdetail';
@@ -10,6 +11,8 @@ import SignUpPage from './pages/signup';
 const App = () => {
   return (
     <BrowserRouter>
+      <TopNavigation />
+
       <Routes>
         <Route index element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />

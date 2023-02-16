@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Body1, Body2 } from '../../styles/common';
+import { Body1, Body2 } from '../../../styles/common';
 
 export const Layout = styled.div`
   width: 184px;

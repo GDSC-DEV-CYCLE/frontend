@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import SideNavigation from '../../components/SideNavigation';
+import SideNavigation from '../../components/Navigation/SideNavigation';
 import { Display3 } from '../../styles/common';
 
 export const Layout = styled.div`
