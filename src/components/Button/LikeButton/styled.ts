@@ -11,8 +11,9 @@ export const Button = styled.button<ButtonProps>`
   justify-content: space-between;
   align-items: center;
   width: 100px;
-  transition-duration: 0.2s;
   border: none;
+  white-space: nowrap;
+  transition-duration: 0.2s;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.radius.sm};
   padding: ${({ theme }) => theme.spacing.md};
