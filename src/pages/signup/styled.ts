@@ -7,7 +7,7 @@ export const DevCycleLogoImage = styled.img`
   height: 24px;
 `;
 
-export const LoginPageLayout = styled.div`
+export const SignInPageLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,24 +26,12 @@ export const ContentLayout = styled.div`
   width: 30%;
 `;
 
-export const LoginForm = styled.form`
+export const SignUpForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-`;
-
-export const SignUpButton = styled(Button)`
-  background-color: #fff0;
-  color: ${({ theme }) => theme.colors.gray2};
-
-  width: fit-content;
-
-  &:hover {
-    background-color: #fff1;
-    color: ${({ theme }) => theme.colors.gray3};
-  }
 `;
 
 export const ErrorMessageBox = styled.div`

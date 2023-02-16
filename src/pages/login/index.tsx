@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import DevCycleLogo from '../../assets/images/dev-cycle-logo.svg';
-import Button from '../../components/Button';
+import Button from '../../components/Button/DefaultButton';
 import Input from '../../components/Input';
 import VSpace from '../../components/VSpace';
 import {
@@ -15,6 +16,8 @@ import {
 
 export default function LoginPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const navigate = useNavigate();
 
   const login = async ({ email, password }: { email: string; password: string }) => {
     // TODO: 로그인 API 호출
@@ -33,7 +36,7 @@ export default function LoginPage() {
 
   const handleSignUp = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log('sign up');
+    navigate('/signup');
   };
 
   return (
