@@ -8,8 +8,14 @@ export default function TopNavigation() {
   const { postKind, changePostKind } = useTopNavigation();
   const { isLogin } = useLogin();
 
-  const logoName = '{DEV.CYCLE}';
   const navigate = useNavigate();
+
+  const logoName = '{DEV.CYCLE}';
+
+  const onClickLogoButton = () => {
+    changePostKind('칼럼');
+    navigate('/postlist');
+  };
 
   const onClickNavigationButton = (navigation: string) => {
     changePostKind(navigation);
@@ -19,19 +25,21 @@ export default function TopNavigation() {
   return (
     <S.Layout>
       <div>
-        <S.LogoButton>{logoName}</S.LogoButton>
-        <S.NavigationButton
-          onClick={() => onClickNavigationButton('후기')}
-          isSelected={postKind === '후기'}
-        >
-          후기
-        </S.NavigationButton>
+        <S.LogoButton onClick={onClickLogoButton}>{logoName}</S.LogoButton>
+
         <S.NavigationButton
           onClick={() => onClickNavigationButton('칼럼')}
           isSelected={postKind === '칼럼'}
         >
           칼럼
         </S.NavigationButton>
+        <S.NavigationButton
+          onClick={() => onClickNavigationButton('후기')}
+          isSelected={postKind === '후기'}
+        >
+          후기
+        </S.NavigationButton>
+
         <S.NavigationButton
           onClick={() => onClickNavigationButton('Q&A')}
           isSelected={postKind === 'Q&A'}
