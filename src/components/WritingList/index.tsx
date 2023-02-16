@@ -8,7 +8,7 @@ type Props = {
   writer: string;
   company?: string;
   commentNum: number;
-  heartNum: number;
+  likeNum: number;
 };
 
 export default function WritingList({
@@ -18,7 +18,7 @@ export default function WritingList({
   writer,
   company,
   commentNum,
-  heartNum,
+  likeNum,
 }: Props) {
   return (
     <S.Layout>
@@ -40,7 +40,7 @@ export default function WritingList({
           {writer} {company ? ` · ${company}` : ''}
         </S.SubInfo>
         <S.SubInfo>
-          댓글 {commentNum} · 좋아요 {heartNum}
+          댓글 {commentNum} · 좋아요 {likeNum}
         </S.SubInfo>
       </S.SubInfoContainer>
     </S.Layout>

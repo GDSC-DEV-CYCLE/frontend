@@ -7,7 +7,7 @@ type Props = {
   children: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function Button({ color = 'primary', children, ...args }: Props) {
+export default function DefaultButton({ color = 'primary', children, ...args }: Props) {
   return (
     <S.Button color={color} {...args}>
       {children}
