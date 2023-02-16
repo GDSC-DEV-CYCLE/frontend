@@ -49,9 +49,9 @@ export default function TopNavigation() {
       </div>
 
       {isLogin ? (
-        <S.ButtonWrapper>
+        <S.UserButtonWrapper>
           <img src={userIcon} alt="user-icon" />
-        </S.ButtonWrapper>
+        </S.UserButtonWrapper>
       ) : (
         <S.LoginButton color="normal">로그인</S.LoginButton>
       )}

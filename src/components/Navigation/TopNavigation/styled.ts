@@ -47,7 +47,8 @@ export const NavigationButton = styled.button<NavigationButtonProps>`
         `}
 `;
 
-export const ButtonWrapper = styled.button`
+export const UserButtonWrapper = styled.button`
+  height: 40px;
   margin: 0px;
   padding: 0px;
   border: none;
