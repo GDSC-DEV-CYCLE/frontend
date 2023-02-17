@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import DevCycleLogo from '../../assets/images/dev-cycle-logo.svg';
-import Button from '../../components/Button/DefaultButton';
+import DefaultButton from '../../components/Button/DefaultButton';
 import Input from '../../components/Input';
 import VSpace from '../../components/VSpace';
 import {
@@ -50,7 +50,7 @@ export default function LoginPage() {
           <Input type="password" id="password" placeholder="비밀번호" />
           <ErrorMessageBox>{errorMessage}</ErrorMessageBox>
           <VSpace size={8} />
-          <Button type="submit">로그인</Button>
+          <DefaultButton type="submit">로그인</DefaultButton>
           <VSpace size={32} />
           <SignUpButton onClick={handleSignUp}>회원가입</SignUpButton>
         </LoginForm>

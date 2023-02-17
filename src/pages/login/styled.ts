@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Button from '../../components/Button/DefaultButton';
+import DefaultButton from '../../components/Button/DefaultButton';
 import { Body1 } from '../../styles/common';
 
 export const DevCycleLogoImage = styled.img`
@@ -34,7 +34,7 @@ export const LoginForm = styled.form`
   width: 100%;
 `;
 
-export const SignUpButton = styled(Button)`
+export const SignUpButton = styled(DefaultButton)`
   background-color: #fff0;
   color: ${({ theme }) => theme.colors.gray2};
 

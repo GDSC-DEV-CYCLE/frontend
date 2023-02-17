@@ -13,6 +13,7 @@ export const Button = styled.button<ButtonProps>`
   border-radius: ${({ theme }) => theme.radius.sm};
   padding: ${({ theme }) => theme.spacing.md};
   transition-duration: 0.2s;
+  white-space: nowrap;
 
   ${({ color, theme }) =>
     color === 'primary'
