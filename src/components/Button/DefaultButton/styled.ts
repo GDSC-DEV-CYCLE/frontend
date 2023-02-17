@@ -7,6 +7,12 @@ interface ButtonProps {
 }
 
 export const Button = styled.button<ButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
   cursor: pointer;
   height: 40px;
   width: 100%;

@@ -7,6 +7,7 @@ interface VSpaceProps {
 export const VSpace = styled.div<VSpaceProps>`
   ${({ size }) =>
     css`
-      height: ${size}px;
+      min-height: ${size}px;
+      max-height: ${size}px;
     `}
 `;

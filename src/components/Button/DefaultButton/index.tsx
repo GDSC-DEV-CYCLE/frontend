@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes } from 'react';
 import * as S from './styled';
 
 type Props = {
-  children: string;
+  children: string | React.ReactNode;
   color?: 'primary' | 'normal';
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
