@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import LoadMoreButton from './LoadMoreButton';
 import * as S from './styled';
 import SubTopNavigation from './SubTopNavigation';
 
@@ -38,6 +39,7 @@ export default function PostListPage() {
             setSelected={setSelectedNavigation}
           />
         </S.PostListsContainer>
+        <LoadMoreButton />
       </S.MainLayout>
 
       <S.EmptyContainer />
