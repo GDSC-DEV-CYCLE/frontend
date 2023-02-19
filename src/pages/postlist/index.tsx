@@ -1,10 +1,13 @@
 import { useState } from 'react';
 
+import { useLogin } from '../../store/store';
 import LoadMoreButton from './LoadMoreButton';
 import * as S from './styled';
 import SubTopNavigation from './SubTopNavigation';
 
 export default function PostListPage() {
+  const { isLogin } = useLogin();
+
   const [selectedNavigation, setSelectedNavigation] = useState('최신순');
   const [selectedSearchCondition, setSelectedSearchCondition] = useState('키워드');
 
@@ -18,7 +21,7 @@ export default function PostListPage() {
 
   return (
     <S.Layout>
-      <S.WriteButton color="normal">글 작성하기</S.WriteButton>
+      {isLogin && <S.WriteButton color="normal">글 작성하기</S.WriteButton>}
 
       <S.MainLayout>
         <S.SearchContainer>
@@ -47,7 +50,7 @@ export default function PostListPage() {
         <LoadMoreButton onClick={onClickLoadMoreButton} />
       </S.MainLayout>
 
-      <S.EmptyContainer />
+      {isLogin && <S.EmptyContainer />}
     </S.Layout>
   );
 }
