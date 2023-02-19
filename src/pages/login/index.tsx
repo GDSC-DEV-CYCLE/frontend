@@ -5,6 +5,7 @@ import DevCycleLogo from '../../assets/images/dev-cycle-logo.svg';
 import DefaultButton from '../../components/Button/DefaultButton';
 import Input from '../../components/Input';
 import VSpace from '../../components/VSpace';
+import Authentication from '../../utils/Authentication';
 import {
   ContentLayout,
   DevCycleLogoImage,
@@ -21,8 +22,13 @@ export default function LoginPage() {
 
   const login = async ({ email, password }: { email: string; password: string }) => {
     // TODO: 로그인 API 호출
-    console.log('login', email, password);
-    setErrorMessage('이메일 또는 비밀번호가 일치하지 않습니다.');
+    await Authentication.signIn({
+      email,
+      password,
+    });
+
+    navigate('/postlist');
+    // setErrorMessage('이메일 또는 비밀번호가 일치하지 않습니다.');
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
