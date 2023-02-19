@@ -25,6 +25,8 @@ export default function TopNavigation() {
     navigate('/postlist');
   };
 
+  const onClickLoginButton = () => navigate('/');
+  const onClickMyPageButton = () => navigate('/mypage');
   return (
     <S.Layout>
       <S.NavigationButtonWrapper>

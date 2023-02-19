@@ -12,6 +12,10 @@ export default function PostListPage() {
     setSelectedSearchCondition(e.target.value);
   };
 
+  const onClickLoadMoreButton = () => {
+    //
+  };
+
   return (
     <S.Layout>
       <S.WriteButton color="normal">글 작성하기</S.WriteButton>
@@ -39,7 +43,8 @@ export default function PostListPage() {
             setSelected={setSelectedNavigation}
           />
         </S.PostListsContainer>
-        <LoadMoreButton />
+
+        <LoadMoreButton onClick={onClickLoadMoreButton} />
       </S.MainLayout>
 
       <S.EmptyContainer />
