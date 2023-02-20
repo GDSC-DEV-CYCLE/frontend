@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import userIcon from '../../../assets/icons/user.svg';
@@ -18,22 +19,44 @@ export default function TopNavigation() {
   const onClickLogoButton = () => {
     changePostKind('칼럼');
     navigate('/postlist');
+
+    localStorage.setItem('topNavigation', '칼럼');
   };
 
   const onClickNavigationButton = (navigation: PostKindTypes) => {
-    changePostKind(navigation);
     navigate('/postlist');
+    changePostKind(navigation);
+
+    localStorage.setItem('topNavigation', navigation);
   };
 
   const onClickLoginButton = () => {
     navigate('/');
     changePostKind('');
+
+    localStorage.setItem('topNavigation', '');
   };
 
   const onClickMyPageButton = () => {
     navigate('/mypage');
     changePostKind('');
+
+    localStorage.setItem('topNavigation', '');
   };
+
+  useEffect(() => {
+    const previousNavigation = localStorage.getItem('topNavigation');
+
+    if (
+      previousNavigation !== '칼럼' &&
+      previousNavigation !== '후기' &&
+      previousNavigation !== 'Q&A' &&
+      previousNavigation !== ''
+    )
+      return;
+
+    changePostKind(previousNavigation);
+  }, []);
 
   return (
     <S.Layout>
