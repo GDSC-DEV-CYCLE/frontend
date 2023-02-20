@@ -38,6 +38,8 @@ export const SeachInputContainer = styled.div`
 
 export const SearchSelect = styled.select`
   padding: 0 8px;
+  outline: none;
+  cursor: pointer;
 
   ${({ theme }) =>
     css`
