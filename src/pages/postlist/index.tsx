@@ -11,6 +11,7 @@ export default function PostListPage() {
 
   const [selectedNavigation, setSelectedNavigation] = useState('최신순');
   const [selectedSearchCondition, setSelectedSearchCondition] = useState('키워드');
+  const [loadMoreTimes, setLoadMoreTimes] = useState(0);
 
   const navigate = useNavigate();
 
@@ -23,7 +24,7 @@ export default function PostListPage() {
   };
 
   const onClickLoadMoreButton = () => {
-    //
+    setLoadMoreTimes((prev) => prev + 1);
   };
 
   return (
