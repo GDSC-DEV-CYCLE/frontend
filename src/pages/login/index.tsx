@@ -22,13 +22,15 @@ export default function LoginPage() {
 
   const login = async ({ email, password }: { email: string; password: string }) => {
     // TODO: 로그인 API 호출
-    await Authentication.signIn({
-      email,
-      password,
-    });
-
+    try {
+      await Authentication.signIn({
+        email,
+        password,
+      });
+    } catch {
+      setErrorMessage('이메일 또는 비밀번호가 일치하지 않습니다.');
+    }
     navigate('/postlist');
-    // setErrorMessage('이메일 또는 비밀번호가 일치하지 않습니다.');
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

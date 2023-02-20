@@ -27,6 +27,7 @@ class Authentication {
       setAccessTokenExpiration,
       setRefreshTokenExpiration,
       setUserInfo,
+      setIsSignedIn,
     } = useAuthStore.getState();
 
     const response = await axios.post<SignInDTO, SignInResponse>(
@@ -37,10 +38,14 @@ class Authentication {
     const { accessToken, refreshToken, accessTokenExpiration, refreshTokenExpiration } =
       response.data;
 
+    console.log('login response: ', response);
+
     setAccessToken(accessToken);
     setRefreshToken(refreshToken);
-    setAccessTokenExpiration(accessTokenExpiration);
-    setRefreshTokenExpiration(refreshTokenExpiration);
+    setAccessTokenExpiration(new Date().getTime() + accessTokenExpiration);
+    console.log(new Date().getTime() + accessTokenExpiration);
+    setRefreshTokenExpiration(new Date().getTime() + refreshTokenExpiration);
+    setIsSignedIn(true);
 
     const userInfo = await Authentication.getUser();
     setUserInfo(userInfo);
@@ -59,36 +64,49 @@ class Authentication {
     const {
       accessToken,
       refreshToken,
+      accessTokenExpiration,
+      refreshTokenExpiration,
       setAccessToken,
       setRefreshToken,
       setAccessTokenExpiration,
       setRefreshTokenExpiration,
-      isAccessTokenExpired,
-      isRefreshTokenExpired,
     } = useAuthStore.getState();
 
-    if (!isAccessTokenExpired() || isRefreshTokenExpired()) {
+    console.log(refreshToken);
+
+    if (
+      accessTokenExpiration > new Date().getTime() + 60000 &&
+      refreshTokenExpiration > new Date().getTime() + 60000
+    ) {
+      console.error('Tokens are not expired');
       return;
     }
 
     if (!accessToken || !refreshToken) {
+      console.error('Tokens are not set');
       return;
     }
 
-    const response = await postWithCredentials<ReissueDTO, ReissueResponse>(
-      '/auth/reissue-tokens',
-      {
-        accessToken,
-        refreshToken,
-      },
+    const request: ReissueDTO = {
+      accessToken,
+      refreshToken,
+    };
+
+    console.log('request', request);
+
+    const response = await axios.post<ReissueDTO, ReissueResponse>(
+      `${VITE_APP_API_URL}/auth/reissue`,
+      request,
     );
+
+    console.log('response', response);
 
     const {
       accessToken: accessToken2,
       refreshToken: refreshToken2,
       accessTokenExpiration: accessTokenExpiration2,
       refreshTokenExpiration: refreshTokenExpiration2,
-    } = response.data.data;
+    } = response.data;
 
     setAccessToken(accessToken2);
     setRefreshToken(refreshToken2);

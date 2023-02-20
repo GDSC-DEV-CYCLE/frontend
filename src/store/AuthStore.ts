@@ -1,5 +1,5 @@
+import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { createStore } from 'zustand/vanilla';
 
 interface AuthState {
   accessToken: string | null;
@@ -23,7 +23,7 @@ interface AuthState {
   isRefreshTokenExpired: () => boolean;
 }
 
-export const useAuthStore = createStore<AuthState>()(
+export const useAuthStore = create<AuthState>()(
   persist(
     (set, get) => ({
       accessToken: null,
