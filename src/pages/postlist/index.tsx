@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useLogin } from '../../store/store';
 import LoadMoreButton from './LoadMoreButton';
@@ -11,8 +12,14 @@ export default function PostListPage() {
   const [selectedNavigation, setSelectedNavigation] = useState('최신순');
   const [selectedSearchCondition, setSelectedSearchCondition] = useState('키워드');
 
+  const navigate = useNavigate();
+
   const onChangeSearchSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedSearchCondition(e.target.value);
+  };
+
+  const onClickPost = () => {
+    navigate('/postdetail', { state: { id: '' } }); // id 임시
   };
 
   const onClickLoadMoreButton = () => {
