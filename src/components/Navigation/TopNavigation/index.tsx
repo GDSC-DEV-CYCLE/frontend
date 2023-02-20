@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import userIcon from '../../../assets/icons/user.svg';
 import DevCycleLogo from '../../../assets/images/dev-cycle-logo.svg';
@@ -13,6 +13,7 @@ export default function TopNavigation() {
   const { isSignedIn: isLogin } = useAuthStore.getState();
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const logoName = '{DEV.CYCLE}';
 
@@ -45,6 +46,11 @@ export default function TopNavigation() {
   };
 
   useEffect(() => {
+    if (location.pathname === '/postlist' || location.pathname === '/postdetail') {
+      changePostKind('칼럼');
+      return;
+    }
+
     const previousNavigation = localStorage.getItem('topNavigation');
 
     if (

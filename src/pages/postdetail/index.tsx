@@ -7,6 +7,7 @@ import * as S from './styled';
 
 export default function PostDetailPage() {
   const [comment, setComment] = useState('');
+  const [isPostLiked, setIsPostLiked] = useState(false);
 
   const onChangeCommentTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setComment(e.target.value);
@@ -14,6 +15,10 @@ export default function PostDetailPage() {
 
   const onClickCommentSubmitButton = () => {
     setComment('');
+  };
+
+  const onClickLikeButton = () => {
+    setIsPostLiked((prev) => !prev);
   };
 
   return (
@@ -25,7 +30,9 @@ export default function PostDetailPage() {
             <S.Writer>김가은</S.Writer>
           </div>
 
-          <LikeButton isClicked={false}>1.5k</LikeButton>
+          <LikeButton isClicked={isPostLiked} onClick={onClickLikeButton}>
+            1.5k
+          </LikeButton>
         </S.PostInfoContainer>
 
         <S.Content>
