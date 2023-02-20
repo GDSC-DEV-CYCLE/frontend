@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import userIcon from '../../../assets/icons/user.svg';
 import DevCycleLogo from '../../../assets/images/dev-cycle-logo.svg';
 import { useAuthStore } from '../../../store/AuthStore';
-import { useLogin, useTopNavigation } from '../../../store/store';
-import Authentication from '../../../utils/Authentication';
+import { useTopNavigation } from '../../../store/store';
+import { PostKindTypes } from '../../../types/navigation';
 import * as S from './styled';
 
 export default function TopNavigation() {
@@ -20,7 +20,7 @@ export default function TopNavigation() {
     navigate('/postlist');
   };
 
-  const onClickNavigationButton = (navigation: string) => {
+  const onClickNavigationButton = (navigation: PostKindTypes) => {
     changePostKind(navigation);
     navigate('/postlist');
   };

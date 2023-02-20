@@ -87,4 +87,7 @@ interface ChangePasswordDTO {
 interface ChangePasswordResponse {
   status: number;
   message: string;
+export interface UseLoginTypes {
+  isLogin: boolean;
+  changeLoginState: () => void;
 }

@@ -1,19 +1,12 @@
 import { create } from 'zustand';
 
-interface UseTopNavigationTypes {
-  postKind: string;
-  changePostKind: (navigtion: string) => void;
-}
+import { PostKindTypes, UseTopNavigationTypes } from '../types/navigation';
+import { UseLoginTypes } from '../types/user';
 
 export const useTopNavigation = create<UseTopNavigationTypes>((set) => ({
-  postKind: '칼럼',
-  changePostKind: (navigation: string) => set({ postKind: navigation }),
+  postKind: '',
+  changePostKind: (navigation: PostKindTypes) => set({ postKind: navigation }),
 }));
-
-interface UseLoginTypes {
-  isLogin: boolean;
-  changeLoginState: () => void;
-}
 
 export const useLogin = create<UseLoginTypes>((set) => ({
   isLogin: false,
