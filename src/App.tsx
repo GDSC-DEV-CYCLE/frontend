@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import TopNavigation from './components/Navigation/TopNavigation';
+import ReissueComponent from './components/Reissue/ReissueComponent';
 import LoginPage from './pages/login';
 import MyPage from './pages/mypage';
 import PostDetailPage from './pages/postdetail';
@@ -12,7 +13,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <TopNavigation />
-
+      <ReissueComponent />
       <Routes>
         <Route index element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />

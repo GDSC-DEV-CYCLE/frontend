@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 
 import userIcon from '../../../assets/icons/user.svg';
+import { useAuthStore } from '../../../store/AuthStore';
 import { useLogin, useTopNavigation } from '../../../store/store';
+import Authentication from '../../../utils/Authentication';
 import * as S from './styled';
 
 export default function TopNavigation() {
   const { postKind, changePostKind } = useTopNavigation();
-  const { isLogin } = useLogin();
+  const { isSignedIn: isLogin } = useAuthStore.getState();
 
   const navigate = useNavigate();
 
@@ -49,7 +51,11 @@ export default function TopNavigation() {
       </div>
 
       {isLogin ? (
-        <S.UserButtonWrapper>
+        <S.UserButtonWrapper
+          onClick={() => {
+            Authentication.signOut();
+          }}
+        >
           <img src={userIcon} alt="user-icon" />
         </S.UserButtonWrapper>
       ) : (
