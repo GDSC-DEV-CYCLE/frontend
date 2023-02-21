@@ -3,6 +3,7 @@ import { useState } from 'react';
 import LikeButton from '../../components/Button/LikeButton';
 import TextArea from '../../components/TextArea';
 import postWithCredentials from '../../utils/postWithCredentials';
+import Comment from './Comment';
 import Profile from './Profile';
 import * as S from './styled';
 
@@ -27,6 +28,29 @@ export default function PostDetailPage() {
       postWithCredentials('/like/post/1', {});
     }
   };
+
+  const tempArr = [
+    {
+      content:
+        'ectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo.',
+      writer: '김가은',
+      time: '2022-04-02 08:09',
+      isMyComment: false,
+      likeNum: 80,
+      company: '회사',
+      id: 1,
+    },
+    {
+      content:
+        'ectetur, ultrices mauris. Maecenas vitae mattis tellus. Nullam quis imperdiet augue. Vestibulum auctor ornare leo, non suscipit magna interdum eu. Curabitur pellentesque nibh nibh, at maximus ante fermentum sit amet. Pellentesque commodo lacus at sodales sodales. Quisque sagittis orci ut diam condimentum',
+      writer: '김가은',
+      time: '2022-04-02 08:09',
+      isMyComment: false,
+      likeNum: 80,
+      company: '회사',
+      id: 2,
+    },
+  ];
 
   return (
     <S.Layout>
@@ -58,6 +82,19 @@ export default function PostDetailPage() {
       </S.PostLayout>
 
       <S.CommentsLayout>
+        {tempArr.map((item) => {
+          return (
+            <Comment
+              writer={item.writer}
+              time={item.time}
+              isMyComment={item.isMyComment}
+              likeNum={item.likeNum}
+              key={item.id}
+            >
+              {item.content}
+            </Comment>
+          );
+        })}
         <S.WritingCommentContainer>
           <TextArea onChange={onChangeCommentTextArea} value={comment} />
           <S.WritingCommentButton color="normal" onClick={onClickCommentSubmitButton}>
