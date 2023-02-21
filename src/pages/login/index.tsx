@@ -21,16 +21,15 @@ export default function LoginPage() {
   const navigate = useNavigate();
 
   const login = async ({ email, password }: { email: string; password: string }) => {
-    // TODO: 로그인 API 호출
     try {
       await Authentication.signIn({
         email,
         password,
       });
+      navigate('/postlist');
     } catch {
       setErrorMessage('이메일 또는 비밀번호가 일치하지 않습니다.');
     }
-    navigate('/postlist');
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
