@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import WritingList from '../../components/WritingList';
+import { useAuthStore } from '../../store/AuthStore';
 import { useLogin, useTopNavigation } from '../../store/store';
 import LoadMoreButton from './LoadMoreButton';
 import * as S from './styled';
 import SubTopNavigation from './SubTopNavigation';
 
 export default function PostListPage() {
-  const { isLogin } = useLogin();
+  const { isSignedIn: isLogin } = useAuthStore.getState();
   const { postKind } = useTopNavigation();
 
   const [selectedNavigation, setSelectedNavigation] = useState('최신순');
