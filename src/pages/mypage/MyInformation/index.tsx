@@ -5,6 +5,7 @@ import Input from '../../../components/Input';
 import { Label } from '../../../components/Label/styled';
 import VSpace from '../../../components/VSpace';
 import { useAuthStore } from '../../../store/AuthStore';
+import Authentication from '../../../utils/Authentication';
 import * as S from './styled';
 
 export default function MyInformation() {
@@ -34,7 +35,18 @@ export default function MyInformation() {
     if (newPassword.value !== passwordConfirm.value) {
       alert('비밀번호 확인이 일치하지 않습니다.');
       return;
+    } else {
+      Authentication.changePassword({
+        password: newPassword.value,
+        checkPassword: passwordConfirm.value,
+      });
+      alert('회원정보가 변경되었습니다.');
     }
+  };
+
+  const handleLogout = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    Authentication.signOut();
   };
 
   return (
@@ -70,7 +82,9 @@ export default function MyInformation() {
         </Button>
       </form>
       <VSpace size={8} />
-      <Button color="normal">로그아웃</Button>
+      <Button color="normal" type="button" onClick={handleLogout}>
+        로그아웃
+      </Button>
     </S.Layout>
   );
 }

@@ -53,7 +53,7 @@ export default function TopNavigation() {
       {isLogin ? (
         <S.UserButtonWrapper
           onClick={() => {
-            Authentication.signOut();
+            navigate('/mypage');
           }}
         >
           <img src={userIcon} alt="user-icon" />

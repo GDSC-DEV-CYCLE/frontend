@@ -30,25 +30,31 @@ class Authentication {
       setIsSignedIn,
     } = useAuthStore.getState();
 
-    const response = await axios.post<SignInDTO, SignInResponse>(
-      `${VITE_APP_API_URL}/auth/login`,
-      signInDTO,
-    );
+    try {
+      const response = await axios.post<SignInDTO, SignInResponse>(
+        `${VITE_APP_API_URL}/auth/login`,
+        signInDTO,
+      );
 
-    const { accessToken, refreshToken, accessTokenExpiration, refreshTokenExpiration } =
-      response.data;
+      const { accessToken, refreshToken, accessTokenExpiration, refreshTokenExpiration } =
+        response.data;
 
-    console.log('login response: ', response);
+      console.log('login response: ', response);
 
-    setAccessToken(accessToken);
-    setRefreshToken(refreshToken);
-    setAccessTokenExpiration(new Date().getTime() + accessTokenExpiration);
-    console.log(new Date().getTime() + accessTokenExpiration);
-    setRefreshTokenExpiration(new Date().getTime() + refreshTokenExpiration);
-    setIsSignedIn(true);
+      setAccessToken(accessToken);
+      setRefreshToken(refreshToken);
+      setAccessTokenExpiration(new Date().getTime() + accessTokenExpiration);
+      console.log(new Date().getTime() + accessTokenExpiration);
+      setRefreshTokenExpiration(new Date().getTime() + refreshTokenExpiration);
+      setIsSignedIn(true);
 
-    const userInfo = await Authentication.getUser();
-    setUserInfo(userInfo);
+      const userInfo = await Authentication.getUser();
+      setUserInfo(userInfo);
+
+      console.log(response);
+    } catch (error) {
+      throw new Error('Error in Authentication.signIn');
+    }
   }
 
   static async signOut() {
@@ -112,6 +118,37 @@ class Authentication {
     setRefreshToken(refreshToken2);
     setAccessTokenExpiration(accessTokenExpiration2);
     setRefreshTokenExpiration(refreshTokenExpiration2);
+  }
+
+  static async changePassword(changePasswordDTO: ChangePasswordDTO) {
+    const response = await postWithCredentials<ChangePasswordDTO, ChangePasswordResponse>(
+      '/auth/change/pw',
+      changePasswordDTO,
+    );
+
+    if (response.status !== 200) {
+      throw new Error('Error');
+    }
+  }
+
+  static async findEmail(findEmailDTO: FindEmailDTO) {
+    const response = await axios.post<FindEmailDTO, FindEmailResponse>(
+      `${VITE_APP_API_URL}/auth/find/id`,
+      findEmailDTO,
+    );
+
+    return response.data;
+  }
+
+  static async findPassword(findPasswordDTO: FindPasswordDTO) {
+    const response = await axios.post<FindPasswordDTO, FindPasswordResponse>(
+      `${VITE_APP_API_URL}/auth/find/pw`,
+      findPasswordDTO,
+    );
+
+    if (response.status !== 200) {
+      throw new Error('Error');
+    }
   }
 }
 

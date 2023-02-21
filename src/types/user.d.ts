@@ -58,15 +58,25 @@ interface ReissueResponse {
   };
 }
 
-interface FindIdDTO {
+interface FindEmailDTO {
   name: string;
   birth: string;
 }
 
-interface FindIdResponse {
+interface FindEmailResponse {
   status: number;
   message: string;
   data: string[];
+}
+
+interface FindPasswordDTO {
+  name: string;
+  email: string;
+}
+
+interface FindPasswordResponse {
+  status: number;
+  message: string;
 }
 
 interface ChangePasswordDTO {
