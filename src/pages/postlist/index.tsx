@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import WritingList from '../../components/WritingList';
 import { useLogin, useTopNavigation } from '../../store/store';
 import LoadMoreButton from './LoadMoreButton';
 import * as S from './styled';
@@ -36,6 +37,49 @@ export default function PostListPage() {
     setLoadMoreTimes((prev) => prev + 1);
   };
 
+  const tempArr = [
+    {
+      title: '제목',
+      content: '콘텐츠',
+      tagList: ['개발자', '프론트엔드'],
+      writer: '김가은',
+      commentNum: 55,
+      likeNum: 107,
+      company: '회사',
+      id: 1,
+    },
+    {
+      title: '제목',
+      content: '콘텐츠',
+      tagList: ['개발자', '프론트엔드'],
+      writer: '김가은',
+      commentNum: 55,
+      likeNum: 107,
+      company: '회사',
+      id: 2,
+    },
+    {
+      title: '제목',
+      content: '콘텐츠',
+      tagList: ['개발자', '프론트엔드'],
+      writer: '김가은',
+      commentNum: 55,
+      likeNum: 107,
+      company: '회사',
+      id: 3,
+    },
+    {
+      title: '제목',
+      content: '콘텐츠',
+      tagList: ['개발자', '프론트엔드'],
+      writer: '김가은',
+      commentNum: 55,
+      likeNum: 107,
+      company: '회사',
+      id: 4,
+    },
+  ];
+
   return (
     <S.Layout>
       {isLogin && <S.WriteButton color="normal">글 작성하기</S.WriteButton>}
@@ -62,9 +106,26 @@ export default function PostListPage() {
             selected={selectedNavigation}
             setSelected={setSelectedNavigation}
           />
+
+          {tempArr.map((item) => {
+            return (
+              <WritingList
+                title={item.title}
+                content={item.content}
+                tagList={item.tagList}
+                writer={item.writer}
+                commentNum={item.commentNum}
+                likeNum={item.likeNum}
+                company={item.company}
+                key={item.id}
+              />
+            );
+          })}
         </S.PostListsContainer>
 
-        <LoadMoreButton onClick={onClickLoadMoreButton} />
+        <S.LoadMoreButtonWrapper>
+          <LoadMoreButton onClick={onClickLoadMoreButton} />
+        </S.LoadMoreButtonWrapper>
       </S.MainLayout>
 
       {isLogin && <S.EmptyContainer />}

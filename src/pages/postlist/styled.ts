@@ -62,3 +62,10 @@ export const SearchButton = styled(DefaultButton)`
 `;
 
 export const PostListsContainer = styled.div``;
+
+export const LoadMoreButtonWrapper = styled.div`
+  /* 임시 */
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+`;
