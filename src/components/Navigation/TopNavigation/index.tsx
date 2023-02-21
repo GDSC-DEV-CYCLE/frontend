@@ -1,10 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import userIcon from '../../../assets/icons/user.svg';
 import DevCycleLogo from '../../../assets/images/dev-cycle-logo.svg';
 import { useAuthStore } from '../../../store/AuthStore';
-import { useLogin, useTopNavigation } from '../../../store/store';
-import Authentication from '../../../utils/Authentication';
+import { useTopNavigation } from '../../../store/store';
+import { PostKindTypes } from '../../../types/navigation';
 import * as S from './styled';
 
 export default function TopNavigation() {
@@ -12,18 +13,56 @@ export default function TopNavigation() {
   const { isSignedIn: isLogin } = useAuthStore.getState();
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const logoName = '{DEV.CYCLE}';
 
   const onClickLogoButton = () => {
     changePostKind('칼럼');
     navigate('/postlist');
+
+    localStorage.setItem('topNavigation', '칼럼');
   };
 
-  const onClickNavigationButton = (navigation: string) => {
-    changePostKind(navigation);
+  const onClickNavigationButton = (navigation: PostKindTypes) => {
     navigate('/postlist');
+    changePostKind(navigation);
+
+    localStorage.setItem('topNavigation', navigation);
   };
+
+  const onClickLoginButton = () => {
+    navigate('/');
+    changePostKind('');
+
+    localStorage.setItem('topNavigation', '');
+  };
+
+  const onClickMyPageButton = () => {
+    navigate('/mypage');
+    changePostKind('');
+
+    localStorage.setItem('topNavigation', '');
+  };
+
+  useEffect(() => {
+    if (location.pathname === '/postlist' || location.pathname === '/postdetail') {
+      changePostKind('칼럼');
+      return;
+    }
+
+    const previousNavigation = localStorage.getItem('topNavigation');
+
+    if (
+      previousNavigation !== '칼럼' &&
+      previousNavigation !== '후기' &&
+      previousNavigation !== 'Q&A' &&
+      previousNavigation !== ''
+    )
+      return;
+
+    changePostKind(previousNavigation);
+  }, []);
 
   return (
     <S.Layout>

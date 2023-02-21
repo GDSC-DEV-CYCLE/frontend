@@ -38,6 +38,8 @@ export const SeachInputContainer = styled.div`
 
 export const SearchSelect = styled.select`
   padding: 0 8px;
+  outline: none;
+  cursor: pointer;
 
   ${({ theme }) =>
     css`
@@ -60,3 +62,14 @@ export const SearchButton = styled(DefaultButton)`
 `;
 
 export const PostListsContainer = styled.div``;
+
+export const LoadMoreButtonWrapper = styled.div`
+  /* 임시 */
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+`;
+
+export const PostWrapper = styled.div`
+  /* 임시 */
+`;
