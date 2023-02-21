@@ -5,6 +5,7 @@ import { Body1, Display1 } from '../../styles/common';
 export const Layout = styled.div`
   padding: 16px;
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.gray2}`};
+  cursor: pointer;
 `;
 
 export const Title = styled.p`

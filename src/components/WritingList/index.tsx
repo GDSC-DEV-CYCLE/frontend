@@ -20,9 +20,10 @@ export default function WritingList({
   commentNum,
   likeNum,
   company,
+  ...args
 }: Props) {
   return (
-    <S.Layout>
+    <S.Layout {...args}>
       <S.Title>{title}</S.Title>
       <S.Content>{content}</S.Content>
 
