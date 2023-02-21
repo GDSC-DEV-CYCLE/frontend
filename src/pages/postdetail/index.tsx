@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import LikeButton from '../../components/Button/LikeButton';
 import TextArea from '../../components/TextArea';
+import postWithCredentials from '../../utils/postWithCredentials';
 import Profile from './Profile';
 import * as S from './styled';
 
@@ -18,7 +19,13 @@ export default function PostDetailPage() {
   };
 
   const onClickLikeButton = () => {
-    setIsPostLiked((prev) => !prev);
+    if (isPostLiked) {
+      setIsPostLiked(false);
+      postWithCredentials('/unlike/post/1', {});
+    } else {
+      setIsPostLiked(true);
+      postWithCredentials('/like/post/1', {});
+    }
   };
 
   return (

@@ -1,17 +1,26 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useLogin } from '../../store/store';
+import { useLogin, useTopNavigation } from '../../store/store';
 import LoadMoreButton from './LoadMoreButton';
 import * as S from './styled';
 import SubTopNavigation from './SubTopNavigation';
 
 export default function PostListPage() {
   const { isLogin } = useLogin();
+  const { postKind } = useTopNavigation();
 
   const [selectedNavigation, setSelectedNavigation] = useState('최신순');
   const [selectedSearchCondition, setSelectedSearchCondition] = useState('키워드');
   const [loadMoreTimes, setLoadMoreTimes] = useState(0);
+
+  // switch (postKind) {
+  //   case '칼럼':
+  //     break;
+  //   case '후기':
+  //     break;
+  //   default:
+  // }
 
   const navigate = useNavigate();
 
