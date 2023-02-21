@@ -18,7 +18,6 @@ export default function MyPage() {
 
       <S.MainLayout>
         <S.Title>{selectedNavigation}</S.Title>
-
         {selectedNavigation === '내가 작성한 글' ? <MyPost /> : <MyInformation />}
       </S.MainLayout>
     </S.Layout>
