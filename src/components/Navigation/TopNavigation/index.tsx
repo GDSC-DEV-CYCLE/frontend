@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import userIcon from '../../../assets/icons/user.svg';
+import DevCycleLogo from '../../../assets/images/dev-cycle-logo.svg';
 import { useAuthStore } from '../../../store/AuthStore';
 import { useLogin, useTopNavigation } from '../../../store/store';
 import Authentication from '../../../utils/Authentication';
@@ -26,9 +27,10 @@ export default function TopNavigation() {
 
   return (
     <S.Layout>
-      <div>
-        <S.LogoButton onClick={onClickLogoButton}>{logoName}</S.LogoButton>
-
+      <S.NavigationButtonWrapper>
+        <S.LogoButton onClick={onClickLogoButton}>
+          <S.DevCycleLogoImage src={DevCycleLogo} alt="dev-cycle-logo" />
+        </S.LogoButton>
         <S.NavigationButton
           onClick={() => onClickNavigationButton('칼럼')}
           isSelected={postKind === '칼럼'}
@@ -48,7 +50,7 @@ export default function TopNavigation() {
         >
           Q&A
         </S.NavigationButton>
-      </div>
+      </S.NavigationButtonWrapper>
 
       {isLogin ? (
         <S.UserButtonWrapper
@@ -59,7 +61,14 @@ export default function TopNavigation() {
           <img src={userIcon} alt="user-icon" />
         </S.UserButtonWrapper>
       ) : (
-        <S.LoginButton color="normal">로그인</S.LoginButton>
+        <S.LoginButton
+          color="normal"
+          onClick={() => {
+            navigate('/');
+          }}
+        >
+          로그인
+        </S.LoginButton>
       )}
     </S.Layout>
   );
