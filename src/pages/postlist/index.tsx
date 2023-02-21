@@ -109,16 +109,17 @@ export default function PostListPage() {
 
           {tempArr.map((item) => {
             return (
-              <WritingList
-                title={item.title}
-                content={item.content}
-                tagList={item.tagList}
-                writer={item.writer}
-                commentNum={item.commentNum}
-                likeNum={item.likeNum}
-                company={item.company}
-                key={item.id}
-              />
+              <S.PostWrapper key={item.id} onClick={onClickPost}>
+                <WritingList
+                  title={item.title}
+                  content={item.content}
+                  tagList={item.tagList}
+                  writer={item.writer}
+                  commentNum={item.commentNum}
+                  likeNum={item.likeNum}
+                  company={item.company}
+                />
+              </S.PostWrapper>
             );
           })}
         </S.PostListsContainer>

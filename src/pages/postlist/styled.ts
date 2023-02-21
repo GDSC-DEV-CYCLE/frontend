@@ -69,3 +69,7 @@ export const LoadMoreButtonWrapper = styled.div`
   justify-content: center;
   padding: 15px 0;
 `;
+
+export const PostWrapper = styled.div`
+  /* 임시 */
+`;
